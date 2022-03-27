@@ -1,6 +1,5 @@
 package com.orange.comics.rest;
 
-import com.orange.comics.domain.Comics;
 import com.orange.comics.domain.Usuario;
 import com.orange.comics.repository.ComicsRepository;
 import com.orange.comics.repository.UserRepository;
@@ -10,10 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.logging.Logger;
 
 @RestController
 @RequestMapping(path = "/cadastro")
@@ -41,6 +36,6 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
-    
+
 
 }
