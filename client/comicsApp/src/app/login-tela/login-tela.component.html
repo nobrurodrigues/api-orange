@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Marvel" />
+  <title>Login</title>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-danger">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="color: white; padding-left: 600px;"
+      >Marvel Comics</a>
+    </div>
+  </nav>
+  <div class="container">
+    <div style="float: left;">
+      <img src="../../assets/images/spider-man.png" class="roll-in-left" style="width: 400px;">
+    </div>
+    <div style="float: right;">
+      <form>
+        <div class="lbl row mb-6" style="align-content: center; padding-top: 100px;">
+          <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}" type="email" placeholder="digite seu email" class="form-control" id="usuario">
+          </div>
+        </div>
+        <div class="lbl row mb-6">
+          <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" type="password" placeholder="digite sua senha" class="form-control" id="senha">
+          </div>
+        </div>
+      </form>
+      <br>
+      <button type="button" class="btn btn-danger" style="width: 58%;"
+      (click)="login()"
+      >
+        Login</button>
+      <br>
+      <br>
+      <div class="container">
+        <p style="float: left;">Não possui cadastro?</p>
+        <a href="" style="float: right;">Cadastre-se aqui</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
