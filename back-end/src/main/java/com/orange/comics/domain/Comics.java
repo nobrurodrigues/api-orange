@@ -24,10 +24,13 @@ public class Comics implements Serializable {
     @Column(nullable = false)
     private String autores;
 
+    @Column
     private BigDecimal preco;
 
-    private Long ISBN;
+    @Column
+    private Long isbn;
 
+    @Column
     private String descricao;
 
     @ManyToOne

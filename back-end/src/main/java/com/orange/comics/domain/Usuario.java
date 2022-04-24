@@ -1,5 +1,6 @@
 package com.orange.comics.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,7 +20,10 @@ public class Usuario implements Serializable {
     private Long id;
 
     @Column(length = 255, nullable = false, unique = true)
-    private String nome;
+    private String username;
+
+    @Column(length = 8, nullable = false)
+    private String password;
 
     @Column(nullable = false ,unique = true)
     private Long cpf;
@@ -28,11 +32,25 @@ public class Usuario implements Serializable {
     private String email;
 
     @Column(name = "data_nascimento")
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-3")
     private Date nascimento;
+
+    @Column
+    private String endereco;
+
+    @Column
+    private String complemento;
+
+    @Column
+    private String cidade;
+
+    @Column
+    private String estado;
+
+    @Column
+    private String cep;
 
     @OneToMany(mappedBy = "usuario")
     private List<Comics> comics;
 
-    @OneToOne
-    private Login login;
 }

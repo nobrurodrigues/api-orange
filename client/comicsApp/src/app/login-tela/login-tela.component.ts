@@ -24,4 +24,8 @@ export class LoginTelaComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
+  cadastro() {
+    this.router.navigate(['/cadastro']);
+  }
+
 }

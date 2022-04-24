@@ -1,6 +1,7 @@
 package com.orange.comics.service;
 
 import com.orange.comics.domain.Comics;
+import com.orange.comics.domain.Usuario;
 import com.orange.comics.repository.ComicsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

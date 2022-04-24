@@ -1,0 +1,55 @@
+<h2 class="title">Insira seus dados e cadastre-se.</h2>
+
+<div class="container">
+  <form id="formulario" class="row g-3" [formGroup]="cadastroForm" (ngSubmit)="salvar()">
+    <div class="col-md-6">
+      <label for="inputName" class="form-label">Nome*</label>
+      <input type="email" class="form-control" id="inputName" formControlName="username">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password*</label>
+      <input type="password" class="form-control" id="inputPassword4" formControlName="password">
+    </div>
+    <div class="col-md-4">
+      <label for="inputCpf" class="form-label">CPF*</label>
+      <input type="email" class="form-control" id="inputCpf" formControlName="cpf">
+    </div>
+    <div class="col-md-4">
+      <label for="inputEmail4" class="form-label">Email*</label>
+      <input type="email" class="form-control" id="inputEmail4" formControlName="email">
+    </div>
+    <div class="col-md-4">
+      <label for="inputData" class="form-label">Data de nascimento</label>
+      <input type="date" class="form-control" id="inputData" formControlName="nascimento">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Endereço</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="digite seu endereço" formControlName="endereco">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Complemento</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartamento, casa, número..." formControlName="complemento">
+    </div>
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label">Cidade</label>
+      <input type="text" class="form-control" id="inputCity" formControlName="cidade">
+    </div>
+    <div class="col-md-6">
+      <label for="inputBairro" class="form-label">Bairro</label>
+      <input type="text" class="form-control" id="inputBairro" formControlName="bairro">
+    </div>
+    <div class="col-md-2">
+      <label for="inputState" class="form-label">Estado</label>
+      <input type="text" class="form-control" id="inputState" formControlName="estado">
+    </div>
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label">CEP</label>
+      <input placeholder="Buscar por cep" type="text" class="form-control" formControlName="cep" id="inputZip" (blur)="buscaCep(this.cadastroForm.value.cep)">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </div>
+    <div>{{ this.cadastroForm.value | json}}</div>
+  </form>
+</div>
+

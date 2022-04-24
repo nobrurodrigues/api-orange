@@ -1,4 +1,6 @@
+import { CharactersApiService } from './../characters/character/shared/characters-api.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-listagem-comics',
@@ -7,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListagemComicsComponent implements OnInit {
 
-  constructor() { }
+  comics: Observable<any>;
+
+  constructor(private service: CharactersApiService) { }
 
   ngOnInit(): void {
-    console.log('INICIOU O COMPONENT.');
+    console.log('Chamada para a Api Marvel');
+    this.getAllComics();
+    console.log('RETORNO -->', this.comics);
+  }
+
+  getAllComics() {
+   this.comics = this.service.getAllCharacters();
   }
 
 }

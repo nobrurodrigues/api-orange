@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/cadastro")
+@RequestMapping(path = "/api/cadastro")
 @AllArgsConstructor
 @Log4j2
 public class UsuarioController {
@@ -24,14 +24,14 @@ public class UsuarioController {
     private UsuarioService service;
 
     @PostMapping()
-    public ResponseEntity<Usuario> cadastrarUsuario(Usuario usuario) {
+    public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody Usuario usuario) {
         Usuario retorno = this.service.save(usuario);
         log.info("Usuário salvo com sucesso --> ", retorno);
         return ResponseEntity.ok(retorno);
     }
 
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<Usuario> retornaUsuario(@PathVariable(name = "id") Long id) {
+    @GetMapping(path = "/{email}")
+    public ResponseEntity<Usuario> retornaUsuario(@PathVariable(name = "email") String email) {
         Usuario usuario = this.userRepository.getById(id);
         return ResponseEntity.ok(usuario);
     }
