@@ -1,3 +1,8 @@
-<p *ngFor="let comic of comics | async">
-  {{ comic | json}}
-</p>
+<div class="card" *ngFor="let comic of comics | async">
+  <div class="card__content">
+    <img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}"
+    class="card-img-top" alt="..." style="height: 200px !important;">
+    <h5 class="card-title">{{comic.name}}</h5>
+  </div>
+</div>
+

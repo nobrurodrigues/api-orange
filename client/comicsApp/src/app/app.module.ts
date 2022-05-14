@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxViacepModule } from "@brunoc/ngx-viacep";
+import { NgBrazil, TextMask } from 'ng-brazil';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { NgxViacepModule } from "@brunoc/ngx-viacep";
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    NgxViacepModule
+    NgxViacepModule,
+    NgBrazil,
+    NgxMaskModule.forRoot()
   ],
   providers: [AuthService, AppRoutingModule],
   bootstrap: [AppComponent]

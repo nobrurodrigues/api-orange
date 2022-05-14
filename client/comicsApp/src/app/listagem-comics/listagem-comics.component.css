@@ -1,138 +1,21 @@
-
-*{
-  font-family: Marvel;
-}
-
-body{
-  height: 100vh;
-  background: var(--body-color);
-}
-
-:root{
-  --primary-color: rgb(197, 44, 44);
-  --primary-color-light: rgb(197, 44, 44);
-  --body-color: rgb(221, 221, 221);
-  --sidebar-color: rgb(197, 44, 44);
-  --toggle-color: rgb(197, 44, 44);
-}
-
-.sidebar{
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 250px;
-  background: var(--sidebar-color);
-}
-
-.sidebar .image-text img{
-  width: 70px;
-  border-radius: 6px;
-}
-
-.sidebar header{
-  position: relative;
-}
-
-.sidebar li{
-  height: 50px;
-  margin-top: 10px;
-  list-style: none;
-  display: flex;
-  align-items: center;
-}
-
-.sidebar li .icon{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 60px;
-  font-size: 20px;
-}
-
-.sidebar li a{
-  height: 100%;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.sidebar header .image-text{
-  display: flex;
-  align-items: center;
-}
-
-.sidebar header .toggle{
-  position: absolute;
-  top: 50%;
-  left: -25px;
-  transform: translateY(-50%);
-  height: 25px;
-  background: var(--primary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: var(--sidebar-color);
-  font-size: 22px;
-}
-
-.sidebar .search-box{
-  background: var(--primary-color-light);
-}
-
-.search-box input{
-  height: 100%;
-  width: 100%;
-  outline: none;
-  border: none;
-  background: var(--primary-color-light);
-}
-
-.sidebar .text{
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.sidebar .image{
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-}
-
-header .image-text .header-text{
-  display: flex;
-  flex-direction: column;
-}
-
-.header-text .name{
-  font-weight: 600;
-}
-
-.header-text .user-comics{
-  margin-top: -2px;
-}
-
- /*-----======= MEU CSS ================ -->*/
-
- .navbar-brand {
-  font-family: Marvel;
-  font-size: 30px;
-  font-weight: 1.5px;
-}
-
-.itens {
-  font-family: Marvel;
-  font-size: 25px;
-}
-
 .card {
-  min-height: 400px;
-  height: 400px;
-}
+  width: 250px;
+  height: 300px;
+  border-radius: 20px;
+  padding: 5px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  display: inline-block;
+ }
 
-img.card-img-top {
-  min-height: 300px;
-  max-height: 300px;
-}
+ .card__content {
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+ }
 
+img {
+  max-height: 250px;
+}

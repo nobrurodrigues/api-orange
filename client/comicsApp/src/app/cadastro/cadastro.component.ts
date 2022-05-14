@@ -1,19 +1,21 @@
 import { UsuarioService } from './../shared/usuario.service';
 import { Usuario } from './../model/usuario.model';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastrService, ToastrModule } from 'ngx-toastr';
-import { NgxViacepService, CEPError, CEPErrorCode } from "@brunoc/ngx-viacep";
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { NgxViacepService, CEPError } from "@brunoc/ngx-viacep";
 import { Router } from '@angular/router';
+import { NgxMaskModule } from 'ngx-mask';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent implements OnInit, AfterViewInit {
 
   cadastroForm: FormGroup;
+  usuario: Usuario;
 
   constructor(private toastr: ToastrService,
               private viaCep: NgxViacepService,
@@ -23,28 +25,32 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.cadastroForm = this.formBuilder.group({
-      username: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      cpf: new FormControl('', Validators.required),
-      nascimento: new FormControl(''),
-      endereco: new FormControl(''),
-      complemento: new FormControl(''),
-      bairro: new FormControl(''),
-      cidade: new FormControl(''),
-      estado: new FormControl(''),
-      cep: new FormControl('')
+      username: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      cpf: ['', [Validators.required, Validators.minLength(11)]],
+      nascimento: [''],
+      endereco: [''],
+      complemento: [''],
+      bairro: [''],
+      cidade: [''],
+      estado: [''],
+      cep: ['']
     });
+  }
+
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   salvar(): void {
     if(this.cadastroForm.valid) {
-      let form = this.cadastroForm.value;
 
-      let usuario = this.extrairModel(form);
-      usuario.nascimento = this.dataFormatada(usuario.nascimento);
+      this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value);
+      this.usuario.nascimento = this.dataFormatada(this.usuario.nascimento);
+      console.log(this.usuario);
 
-      this.usuarioService.salvar(usuario).subscribe({
+      this.usuarioService.salvar(this.usuario).subscribe({
         next: () => {
           this.toastr.success('Cadastrado com sucesso :)', 'Bem-vindo!');
           setTimeout(() => {
@@ -61,27 +67,9 @@ export class CadastroComponent implements OnInit {
     }
   }
 
-  extrairModel(form: any): Usuario {
-    let usuario = new Usuario();
-
-      usuario.username = form.username;
-      usuario.cpf = form.cpf;
-      usuario.nascimento = form.nascimento;
-      usuario.cep = form.cep;
-      usuario.cidade = form.cidade;
-      usuario.complemento = form.complemento;
-      usuario.email = form.email;
-      usuario.endereco = form.endereco;
-      usuario.estado = form.estado;
-      usuario.password = form.password;
-
-    return usuario;
-  }
-
   buscaCep(cep: any): void{
     this.viaCep.buscarPorCep(cep).subscribe({
       next: (data) => {
-        console.log(data.logradouro);
         this.populaFormulario(data);
       },
       error: (error: CEPError) => this.toastr.error(error.message, 'Ops :('),
@@ -107,6 +95,6 @@ export class CadastroComponent implements OnInit {
 
         console.log('DATA FORMATADA: ', dia+"/"+mes+"/"+ano);
     return dia+"/"+mes+"/"+ano;
-}
+  }
 
 }

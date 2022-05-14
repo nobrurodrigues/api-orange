@@ -1,43 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-</head>
-<body>
-  <div class="container">
+   <div class="container">
     <div style="float: left;">
-      <img src="../../assets/images/spider-man.png" class="roll-in-left" style="width: 400px;">
+      <img src="../../assets/images/heroes-removebg-preview.png" class="flicker-in-2">
     </div>
     <div style="float: right;">
-      <form>
-        <div class="lbl row mb-6" style="align-content: center; padding-top: 100px;">
-          <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}" type="email" placeholder="digite seu email" class="form-control" id="usuario">
-          </div>
+      <form class="form card">
+        <div class="card_header">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="none" d="M0 0h24v24H0z"></path>
+            <path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4-5 4v-3H2v-2h8z"></path>
+          </svg>
+          <h1 class="form_heading">Sign in</h1>
         </div>
-        <div class="lbl row mb-6">
-          <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" type="password" placeholder="digite sua senha" class="form-control" id="senha">
-          </div>
+        <div class="field">
+          <label for="username">Username</label>
+          <input class="input" name="username" type="text" placeholder="digite seu nome" id="username">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input class="input" name="user_password" type="password" placeholder="digite sua senha" id="password">
+        </div>
+        <div class="field">
+          <button class="button" (click)="login()">Login</button>
+        </div>
+        <div class="container">
+          <p style="float: left;">Novo por aqui? </p>
+          <a id="link" (click)="cadastro()">Cadastre-se.</a>
         </div>
       </form>
-      <br>
-      <button type="button" class="btn btn-danger" style="width: 58%;"
-      (click)="login()"
-      >
-        Login</button>
-      <br>
-      <br>
-      <div class="container">
-        <p style="float: left;">Não possui cadastro? </p>
-        <a id="link" (click)="cadastro()">Cadastre-se aqui.</a>
-      </div>
     </div>
   </div>
-</body>
-</html>

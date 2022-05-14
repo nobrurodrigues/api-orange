@@ -30,8 +30,8 @@ public class UsuarioController {
         return ResponseEntity.ok(retorno);
     }
 
-    @GetMapping(path = "/{email}")
-    public ResponseEntity<Usuario> retornaUsuario(@PathVariable(name = "email") String email) {
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<Usuario> retornaUsuario(@PathVariable(name = "id") Long id) {
         Usuario usuario = this.userRepository.getById(id);
         return ResponseEntity.ok(usuario);
     }

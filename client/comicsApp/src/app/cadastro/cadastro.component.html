@@ -1,26 +1,46 @@
 <h2 class="title">Insira seus dados e cadastre-se.</h2>
 
 <div class="container">
-  <form id="formulario" class="row g-3" [formGroup]="cadastroForm" (ngSubmit)="salvar()">
+  <form id="formulario" class="row g-3" [formGroup]="cadastroForm">
     <div class="col-md-6">
       <label for="inputName" class="form-label">Nome*</label>
-      <input type="email" class="form-control" id="inputName" formControlName="username">
+       <input type="email" class="form-control" id="inputName" formControlName="username" tooltip="teste"
+       [ngClass]="{'is-invalid': this.cadastroForm.get('username')?.errors && (this.cadastroForm.get('username')?.touched || this.cadastroForm.get('username')?.dirty)}">
     </div>
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Password*</label>
-      <input type="password" class="form-control" id="inputPassword4" formControlName="password">
+        <input type="password" class="form-control" id="inputPassword4" formControlName="password"
+        [ngClass]="{'is-invalid': this.cadastroForm.get('password')?.errors && (this.cadastroForm.get('password')?.touched || this.cadastroForm.get('password')?.dirty)}">
     </div>
     <div class="col-md-4">
       <label for="inputCpf" class="form-label">CPF*</label>
-      <input type="email" class="form-control" id="inputCpf" formControlName="cpf">
+      <input type="text" class="form-control"id="inputCpf" formControlName="cpf" mask="000.000.000-00" aria-describedby="inputCpf inputValidatorCpf"
+      [ngClass]="{'is-invalid': this.cadastroForm.get('cpf')?.errors && (this.cadastroForm.get('cpf')?.touched || this.cadastroForm.get('cpf')?.dirty)}">
+
+      <div id="inputValidatorCpf" class="invalid-feedback">CPF inválido</div>
     </div>
     <div class="col-md-4">
       <label for="inputEmail4" class="form-label">Email*</label>
-      <input type="email" class="form-control" id="inputEmail4" formControlName="email">
+      <input type="email" class="form-control" id="inputEmail4" formControlName="email"
+      [ngClass]="{'is-invalid': this.cadastroForm.get('email')?.errors && (this.cadastroForm.get('email')?.touched || this.cadastroForm.get('email')?.dirty)}">
     </div>
     <div class="col-md-4">
       <label for="inputData" class="form-label">Data de nascimento</label>
       <input type="date" class="form-control" id="inputData" formControlName="nascimento">
+    </div>
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label">CEP</label>
+      <input type="text" class="form-control" formControlName="cep" mask="00000-000"
+      id="inputZip">
+    </div>
+    <div class="col-md-2" style="margin-top: 50px !important;">
+      <button class="cta" (click)="this.buscaCep(this.cadastroForm.value.cep)">
+        <span>Buscar cep</span>
+        <svg viewBox="0 0 13 10" height="10px" width="15px">
+          <path d="M1,5 L11,5"></path>
+          <polyline points="8 1 12 5 8 9"></polyline>
+        </svg>
+      </button>
     </div>
     <div class="col-12">
       <label for="inputAddress" class="form-label">Endereço</label>
@@ -30,11 +50,11 @@
       <label for="inputAddress2" class="form-label">Complemento</label>
       <input type="text" class="form-control" id="inputAddress2" placeholder="Apartamento, casa, número..." formControlName="complemento">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <label for="inputCity" class="form-label">Cidade</label>
       <input type="text" class="form-control" id="inputCity" formControlName="cidade">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <label for="inputBairro" class="form-label">Bairro</label>
       <input type="text" class="form-control" id="inputBairro" formControlName="bairro">
     </div>
@@ -42,14 +62,9 @@
       <label for="inputState" class="form-label">Estado</label>
       <input type="text" class="form-control" id="inputState" formControlName="estado">
     </div>
-    <div class="col-md-2">
-      <label for="inputZip" class="form-label">CEP</label>
-      <input placeholder="Buscar por cep" type="text" class="form-control" formControlName="cep" id="inputZip" (blur)="buscaCep(this.cadastroForm.value.cep)">
-    </div>
     <div class="col-12">
-      <button type="submit" class="btn btn-primary">Cadastrar</button>
+      <button id="save-button" type="submit" class="btn btn-primary" (click)="salvar()">Cadastrar</button>
     </div>
-    <div>{{ this.cadastroForm.value | json}}</div>
   </form>
 </div>
 
